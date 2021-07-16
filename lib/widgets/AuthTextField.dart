@@ -37,7 +37,7 @@ class _AuthTextWidgetState extends State<AuthTextWidget> {
               borderSide: BorderSide(color: kPrussanBlue, width: 2)),
           hintText: widget.hintText,
           labelText: widget.labelText,
-          labelStyle: TextStyle(color: Colors.white),
+          labelStyle: TextStyle(color: Colors.grey),
           border:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.grey))),
     );

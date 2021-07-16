@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "617931416489",
+    "project_id": "yo2urs",
+    "storage_bucket": "yo2urs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617931416489:android:230c93b1bdb39b64dd5ab8",
+        "android_client_info": {
+          "package_name": "com.yusuf.yo2urs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617931416489-mrqnji2b2nf5rne9ohbp4c5jnrj36km9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHmYSob16rCV8CQq_VUb87P0tgPUTY0fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617931416489-mrqnji2b2nf5rne9ohbp4c5jnrj36km9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

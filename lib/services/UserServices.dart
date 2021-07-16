@@ -12,4 +12,14 @@ class UserServices {
       "phone": user.phone
     });
   }
+
+  static Future<YoursUser> getUser(String id) async {
+    DocumentSnapshot result = await _userCollection.doc(id).get();
+
+    return YoursUser(
+        id: id,
+        name: (result.data() as dynamic)['name'],
+        email: (result.data() as dynamic)['email'],
+        phone: (result.data() as dynamic)['phone']);
+  }
 }
