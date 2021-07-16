@@ -15,3 +15,5 @@ part 'LoginScreen.dart';
 part 'HomeScreen.dart';
 part 'SignUpScreen.dart';
 part 'Wrapper.dart';
+part 'MedicineOrderScreen.dart';
+part 'OxygenOrderScreen.dart';
