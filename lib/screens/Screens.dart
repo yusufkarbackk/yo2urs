@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:intl/intl.dart';
 import 'package:yo2urs/models/Models.dart';
 import 'package:yo2urs/shared/Constants.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -17,3 +18,4 @@ part 'SignUpScreen.dart';
 part 'Wrapper.dart';
 part 'MedicineOrderScreen.dart';
 part 'OxygenOrderScreen.dart';
+part 'CheckoutScreen.dart';

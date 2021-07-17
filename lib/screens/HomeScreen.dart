@@ -121,10 +121,10 @@ class HomeScreen extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text('Beli oksigen dari rumah!',
+                              Text('Beli obat dari rumah!',
                                   style: kMainText.copyWith(fontSize: 20)),
                               Text(
-                                'Tidak ingin keluar rumah? Ingin menjaga keluarga agar tetap aman? Sekarang bisa beli oksigen dari rumah loh, cukup pesan dan akan diantar menuju rumah anda',
+                                'Tidak ingin keluar rumah? Ingin menjaga keluarga agar tetap aman? Sekarang bisa beli obat  dari rumah loh, cukup pesan dan akan diantar menuju rumah anda',
                               )
                             ],
                           ),
