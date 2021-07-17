@@ -7,105 +7,98 @@ class MedicineOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: CustomScrollView(slivers: [
-        SliverFillRemaining(
-          hasScrollBody: false,
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.only(bottom: 18),
           child: Column(
             children: [
-              Stack(
-                children: [
-                  Container(
-                      margin: EdgeInsets.only(bottom: 16),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height / 5,
-                      decoration: BoxDecoration(
-                          color: kPrussanBlue,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15),
-                          ))),
-                  Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 24, vertical: 18),
-                      child: FaIcon(FontAwesomeIcons.arrowLeft,
-                          color: Colors.white)),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 18),
-                      child: Text(
-                        'Pesan Obat',
-                        style: kMainText.copyWith(color: Colors.white),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.25,
+                decoration: BoxDecoration(
+                    color: kPrussanBlue,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    )),
+                child: Stack(
+                  children: [
+                    Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: FaIcon(FontAwesomeIcons.arrowLeft,
+                              color: Colors.white),
+                        )),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 18),
+                        child: Text(
+                          'Pesan Obat',
+                          style: kMainText.copyWith(color: Colors.white),
+                        ),
                       ),
                     ),
-                  )
-                ],
+                  ],
+                ),
               ),
-              Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  margin: EdgeInsets.symmetric(vertical: 16),
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width / 2,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        )
-                      ],
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(15),
-                          bottomRight: Radius.circular(15),
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15)))),
-              Container(
-                  height: MediaQuery.of(context).size.width / 2,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  margin: EdgeInsets.symmetric(vertical: 16),
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3),
-                        )
-                      ],
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(15),
-                          bottomRight: Radius.circular(15),
-                          topLeft: Radius.circular(15),
-                          topRight: Radius.circular(15)))),
               Expanded(
                 child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    margin: EdgeInsets.symmetric(vertical: 16),
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3),
-                          )
-                        ],
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15),
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15)))),
+                  child: ListView.builder(
+                      itemCount: medicines.length,
+                      itemBuilder: (context, index) {
+                        final medicine = medicines[index];
+                        final List<Widget> medicineItems = [];
+                        for (var item in medicine.medicines) {
+                          medicineItems.add(Text(item,
+                              style: kSeccondText.copyWith(fontSize: 12)));
+                        }
+
+                        return MedicineDetailWidget(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(medicine.packageName,
+                                style: kMainText.copyWith(fontSize: 18)),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: medicineItems,
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('${medicine.price}',
+                                      style: kSeccondText.copyWith(
+                                          fontSize: 14, color: Colors.green)),
+                                  ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Colors.green),
+                                      onPressed: () {},
+                                      child: Center(
+                                        child: Text('Beli'),
+                                      ))
+                                ])
+                          ],
+                        ));
+                      }),
+                ),
               )
             ],
           ),
-        )
-      ]),
+        ),
+      ),
     ));
   }
 }
