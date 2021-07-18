@@ -1,20 +1,27 @@
 part of 'Screens.dart';
 
 class CheckoutScreen extends StatefulWidget {
-  bool isOxygen;
-  Oxygen? oxygen;
-  Medicine? medicine;
+  CheckoutScreen({
+    Key? key,
+    required this.isOxygen,
+    this.oxygen,
+    this.medicine,
+  }) : super(key: key);
 
-  CheckoutScreen({required this.isOxygen, this.oxygen, this.medicine});
+  final bool isOxygen;
+  final Oxygen? oxygen;
+  final Medicine? medicine;
 
   @override
   _CheckoutScreenState createState() => _CheckoutScreenState();
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
+  TextEditingController addressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     User? user = Provider.of(context);
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -42,6 +49,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           );
                         }
                       }),
+                  TextField(controller: addressController),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           primary: Colors.green, fixedSize: Size(150, 38)),

@@ -12,6 +12,6 @@ class Wrapper extends StatelessWidget {
     } else {
       return HomeScreen();
     }
-    ;
+    
   }
 }
