@@ -4,17 +4,23 @@ class TransactionServices {
   static CollectionReference _transactionCollection =
       FirebaseFirestore.instance.collection("Transactions");
 
-  static Future<void> storeTransaction(YoursUser user, Oxygen? oxygen,
-      Medicine? medicine, bool isOxygen, String address, User? userId) async {
-    await _transactionCollection.doc().set({
-      'userId': userId!.uid,
-      'item': isOxygen ? oxygen!.size : medicine!.packageName,
-      'name': user.name,
-      'email': user.email,
-      'phone': user.phone,
-      'price': isOxygen ? oxygen!.price : medicine!.price,
-      'address': address
-    });
+  static Future<StoreTransactionResult> storeTransaction(
+      YoursTransaction transaction) async {
+    try {
+      await _transactionCollection.add({
+        'userId': transaction.userId,
+        'item': transaction.item,
+        'name': transaction.name,
+        'email': transaction.email,
+        'phone': transaction.phone,
+        'price': transaction.price,
+        'address': transaction.address
+      });
+
+      return StoreTransactionResult(message: null);
+    } catch (e) {
+      return StoreTransactionResult(message: e.toString());
+    }
   }
 
   static Future<YoursTransaction> getTransactions(String userId) async {
@@ -30,4 +36,10 @@ class TransactionServices {
         address: (result as dynamic)['address']);
     return transaction;
   }
+}
+
+class StoreTransactionResult {
+  final String? message;
+
+  StoreTransactionResult({this.message});
 }

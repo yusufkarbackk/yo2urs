@@ -16,6 +16,7 @@ class MedicineOrderScreen extends StatelessWidget {
               BlueHeaderWidget(text: 'Pesan Obat'),
               Expanded(
                 child: Container(
+                  height: MediaQuery.of(context).size.height,
                   child: ListView.builder(
                       itemCount: medicines.length,
                       itemBuilder: (context, index) {
@@ -25,7 +26,7 @@ class MedicineOrderScreen extends StatelessWidget {
                           medicineItems.add(Text(item,
                               style: kSeccondText.copyWith(fontSize: 12)));
                         }
-
+              
                         return MedicineDetailWidget(
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,8 +44,7 @@ class MedicineOrderScreen extends StatelessWidget {
                               height: 12,
                             ),
                             Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text('${medicine.price}',
                                       style: kSeccondText.copyWith(
