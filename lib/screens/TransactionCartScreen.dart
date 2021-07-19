@@ -23,59 +23,73 @@ class TransactionCartScreen extends StatelessWidget {
                         elevation: 3,
                         margin:
                             EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                        child: Row(
                           children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              child: Text(
-                                'Barang: ' + (item.data() as dynamic)['item'],
-                                style: kMainText.copyWith(
-                                    color: Colors.white, fontSize: 16),
+                            Container(
+                                width: 80,
+                                height: 80,
+                                child: Image.asset(
+                                    (item.data() as dynamic)['isOxygen']
+                                        ? 'images/oxygen-logo.png'
+                                        : 'images/medicine-logo.png')),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: Text(
+                                      'Barang: ' +
+                                          (item.data() as dynamic)['item'],
+                                      style: kMainText.copyWith(
+                                          color: Colors.white, fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: Text(
+                                      'Atas nama: ' +
+                                          (item.data() as dynamic)['name'],
+                                      style: kSeccondText.copyWith(
+                                          color: Colors.white, fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: Text(
+                                      'Alamat: ' +
+                                          (item.data() as dynamic)['address'],
+                                      style: kSeccondText.copyWith(
+                                          color: Colors.white, fontSize: 16),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: Text(
+                                        'Harga: ' +
+                                            NumberFormat.currency(
+                                                    locale: 'id_IDR',
+                                                    decimalDigits: 0,
+                                                    symbol: 'Rp')
+                                                .format((item.data()
+                                                    as dynamic)['price']),
+                                        style: kSeccondText.copyWith(
+                                            color: Colors.white, fontSize: 14)),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    child: Text('Status: Dikirim',
+                                        style: kSeccondText.copyWith(
+                                            color: Colors.white, fontSize: 14)),
+                                  ),
+                                ],
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              child: Text(
-                                'Atas nama: ' +
-                                    (item.data() as dynamic)['name'],
-                                style: kSeccondText.copyWith(
-                                    color: Colors.white, fontSize: 16),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              child: Text(
-                                'Alamat: ' +
-                                    (item.data() as dynamic)['address'],
-                                style: kSeccondText.copyWith(
-                                    color: Colors.white, fontSize: 16),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              child: Text(
-                                  'Harga: ' +
-                                      NumberFormat.currency(
-                                              locale: 'id_IDR',
-                                              decimalDigits: 0,
-                                              symbol: 'Rp')
-                                          .format((item.data()
-                                              as dynamic)['price']),
-                                  style: kSeccondText.copyWith(
-                                      color: Colors.white, fontSize: 14)),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              child: Text('Status: Dikirim',
-                                  style: kSeccondText.copyWith(
-                                      color: Colors.white, fontSize: 14)),
-                            ),
+                            )
                           ],
                         )),
                   ));

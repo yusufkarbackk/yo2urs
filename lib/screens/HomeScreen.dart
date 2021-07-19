@@ -1,9 +1,6 @@
 part of 'Screens.dart';
 
 class HomeScreen extends StatefulWidget {
-  final String id;
-  const HomeScreen({Key? key, required this.id}) : super(key: key);
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -88,7 +85,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: Colors.red,
                                   ),
                                   child: Center(
-                                    //TODO: DYNAMIC SHOP ITEMS
                                     child: StreamBuilder<QuerySnapshot>(
                                       stream:
                                           TransactionServices.getTransactions(
@@ -110,10 +106,18 @@ class _HomeScreenState extends State<HomeScreen> {
                               ],
                             ),
                           ),
-                          FaIcon(
-                            FontAwesomeIcons.user,
-                            color: Colors.white,
-                            size: 28,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProfileScreen()));
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.user,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                           )
                         ],
                       ),
@@ -123,6 +127,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ActivityWidget(
                     child: Row(
                       children: [
+                        Container(
+                            height: 80,
+                            width: 80,
+                            child: Image.asset('images/oxygen-logo.png')),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -146,6 +154,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ActivityWidget(
                     child: Row(
                       children: [
+                        Container(
+                            height: 80,
+                            width: 80,
+                            child: Image.asset('images/medicine-logo.png')),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,

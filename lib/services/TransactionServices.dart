@@ -14,7 +14,8 @@ class TransactionServices {
         'email': transaction.email,
         'phone': transaction.phone,
         'price': transaction.price,
-        'address': transaction.address
+        'address': transaction.address,
+        'isOxygen': transaction.isOxygen
       });
 
       return StoreTransactionResult(message: null);
@@ -24,7 +25,6 @@ class TransactionServices {
   }
 
   static Stream<QuerySnapshot> getTransactions(String userId) {
-    List<YoursTransaction> transactions = [];
     Stream<QuerySnapshot> result =
         _transactionCollection.where('userId', isEqualTo: userId).snapshots();
 

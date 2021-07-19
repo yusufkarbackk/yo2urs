@@ -34,6 +34,19 @@ class AuthServices {
           message: e.toString().split(']')[1], user: null);
     }
   }
+
+  static Future<void> signOut(context) async {
+    User? firebaseUser = mAuth.currentUser;
+
+    if (firebaseUser != null) {
+      FirebaseAuth.instance.signOut().then((value) => {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => WelcomScreen()),
+                (route) => false)
+          });
+    }
+  }
 }
 
 class SignInSignUpResult {

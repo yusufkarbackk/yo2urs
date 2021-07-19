@@ -20,4 +20,5 @@ part 'Wrapper.dart';
 part 'MedicineOrderScreen.dart';
 part 'OxygenOrderScreen.dart';
 part 'CheckoutScreen.dart';
+part 'ProfileScreen.dart';
 part 'TransactionCartScreen.dart';

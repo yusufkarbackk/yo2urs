@@ -162,7 +162,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     price: widget.isOxygen
                                         ? widget.oxygen!.price
                                         : widget.medicine!.price,
-                                    address: addressController.text);
+                                    address: addressController.text,
+                                    isOxygen: widget.isOxygen);
 
                                 var result =
                                     await TransactionServices.storeTransaction(
@@ -182,7 +183,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HomeScreen(id: user.uid,)));
+                                          builder: (context) => HomeScreen()));
                                   Flushbar(
                                     duration: Duration(seconds: 5),
                                     flushbarPosition: FlushbarPosition.TOP,

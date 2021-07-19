@@ -24,7 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    User? user = Provider.of(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: kPrussanBlue,
@@ -40,10 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Stack(
                       children: [
-                        Container(
-                          width: 200,
-                          height: 250,
-                          //NOTE: ADD LOGO
+                        Center(
+                          child: Container(
+                              width: 200,
+                              height: 250,
+                              child: Image.asset('images/yours-logo-white.png')),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
@@ -194,9 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            HomeScreen(
-                                                                id: user!
-                                                                    .uid)));
+                                                            HomeScreen()));
                                               }
                                             }
                                           },

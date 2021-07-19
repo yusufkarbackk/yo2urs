@@ -3,7 +3,7 @@
    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="yo2urs"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/yours_logo_white">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

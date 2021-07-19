@@ -1,8 +1,6 @@
 part of 'Screens.dart';
 
 class WelcomScreen extends StatelessWidget {
-  const WelcomScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -13,8 +11,9 @@ class WelcomScreen extends StatelessWidget {
         children: [
           Center(
             child: Container(
-              child: Text("Yo2rs",
-                  style: kMainText.copyWith(color: Colors.white, fontSize: 36)),
+              width: 200,
+              height: 200,
+              child: Image.asset('images/yours-logo-white.png')
             ),
           ),
           Container(

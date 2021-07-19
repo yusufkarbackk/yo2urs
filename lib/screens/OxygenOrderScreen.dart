@@ -56,6 +56,8 @@ class OxygenOrderScreen extends StatelessWidget {
                                       height: 12,
                                     ),
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                             'Harga: ' +

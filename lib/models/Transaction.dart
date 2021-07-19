@@ -8,6 +8,7 @@ class YoursTransaction {
   final int? phone;
   final int price;
   final String address;
+  final bool isOxygen;
 
   YoursTransaction(
       {required this.userId,
@@ -16,5 +17,6 @@ class YoursTransaction {
       required this.email,
       required this.phone,
       required this.price,
-      required this.address});
+      required this.address,
+      required this.isOxygen});
 }

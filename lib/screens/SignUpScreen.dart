@@ -30,7 +30,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    User user = Provider.of(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: kPrussanBlue,
@@ -43,10 +42,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Stack(
                       children: [
-                        Container(
-                          height: 200,
-                          width: 200,
-                          //TODO: ADD LOGO
+                        Center(
+                          child: Container(
+                              height: 200,
+                              width: 200,
+                              child: Image.asset('images/yours-logo-white.png')),
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
@@ -196,7 +196,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         HomeScreen(
-                                                            id: user.uid)));
+                                                            )));
                                           }
                                         }
                                       },
