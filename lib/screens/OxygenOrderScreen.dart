@@ -19,6 +19,7 @@ class OxygenOrderScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
+                      margin: EdgeInsets.only(top: 18),
                       child: ListView.builder(
                           itemCount: oxygens.length,
                           itemBuilder: (context, index) {
@@ -54,15 +55,36 @@ class OxygenOrderScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 12,
                                     ),
-                                    Text(
-                                        'Harga: ' +
-                                            NumberFormat.currency(
-                                                    locale: 'id_IDR',
-                                                    decimalDigits: 0,
-                                                    symbol: 'Rp')
-                                                .format(oxygen.price),
-                                        style: kSeccondText.copyWith(
-                                            fontSize: 14, color: Colors.green))
+                                    Row(
+                                      children: [
+                                        Text(
+                                            'Harga: ' +
+                                                NumberFormat.currency(
+                                                        locale: 'id_IDR',
+                                                        decimalDigits: 0,
+                                                        symbol: 'Rp')
+                                                    .format(oxygen.price),
+                                            style: kSeccondText.copyWith(
+                                                fontSize: 14,
+                                                color: Colors.green)),
+                                        ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.green),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          CheckoutScreen(
+                                                            isOxygen: true,
+                                                            oxygen: oxygen,
+                                                          )));
+                                            },
+                                            child: Center(
+                                              child: Text('Beli'),
+                                            ))
+                                      ],
+                                    )
                                   ],
                                 ));
                           }),

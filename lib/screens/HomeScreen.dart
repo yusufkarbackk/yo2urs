@@ -1,8 +1,14 @@
 part of 'Screens.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  final String id;
+  const HomeScreen({Key? key, required this.id}) : super(key: key);
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     User? user = Provider.of<User?>(context);
@@ -60,10 +66,19 @@ class HomeScreen extends StatelessWidget {
                           Container(
                             child: Stack(
                               children: [
-                                FaIcon(
-                                  FontAwesomeIcons.shoppingCart,
-                                  color: Colors.white,
-                                  size: 28,
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                TransactionCartScreen()));
+                                  },
+                                  child: FaIcon(
+                                    FontAwesomeIcons.shoppingCart,
+                                    color: Colors.white,
+                                    size: 28,
+                                  ),
                                 ),
                                 Container(
                                   width: 18,
@@ -74,8 +89,22 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   child: Center(
                                     //TODO: DYNAMIC SHOP ITEMS
-                                    child: Text('3',
-                                        style: TextStyle(color: Colors.white)),
+                                    child: StreamBuilder<QuerySnapshot>(
+                                      stream:
+                                          TransactionServices.getTransactions(
+                                              user.uid),
+                                      builder: (context, snapshots) {
+                                        if (snapshots.hasData) {
+                                          return Text(
+                                              snapshots.data!.docs.length
+                                                  .toString(),
+                                              style: TextStyle(
+                                                  color: Colors.white));
+                                        } else {
+                                          return Container();
+                                        }
+                                      },
+                                    ),
                                   ),
                                 )
                               ],

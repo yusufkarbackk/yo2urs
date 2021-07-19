@@ -24,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    User? user = Provider.of(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: kPrussanBlue,
@@ -193,7 +194,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            HomeScreen()));
+                                                            HomeScreen(
+                                                                id: user!
+                                                                    .uid)));
                                               }
                                             }
                                           },

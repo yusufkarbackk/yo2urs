@@ -23,18 +23,12 @@ class TransactionServices {
     }
   }
 
-  static Future<YoursTransaction> getTransactions(String userId) async {
-    QuerySnapshot result =
-        await _transactionCollection.where('userId', isEqualTo: userId).get();
-    YoursTransaction transaction = YoursTransaction(
-        userId: userId,
-        item: (result as dynamic)['item'],
-        name: (result as dynamic)['name'],
-        email: (result as dynamic)['email'],
-        phone: (result as dynamic)['phone'],
-        price: (result as dynamic)['price'],
-        address: (result as dynamic)['address']);
-    return transaction;
+  static Stream<QuerySnapshot> getTransactions(String userId) {
+    List<YoursTransaction> transactions = [];
+    Stream<QuerySnapshot> result =
+        _transactionCollection.where('userId', isEqualTo: userId).snapshots();
+
+    return result;
   }
 }
 

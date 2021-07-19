@@ -182,7 +182,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HomeScreen()));
+                                          builder: (context) => HomeScreen(id: user.uid,)));
                                   Flushbar(
                                     duration: Duration(seconds: 5),
                                     flushbarPosition: FlushbarPosition.TOP,
